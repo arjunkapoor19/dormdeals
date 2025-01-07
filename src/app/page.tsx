@@ -28,7 +28,7 @@ export default function Home() {
   <MaxWidthWrapper> 
     <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            SNU&apos;s exclusive <span className="text-lime-500">commission-free</span> marketplace<span className="text-lime-500">.</span>
+            SNU&apos;s exclusive <span className="gradient-text animate-gradient">commission-free</span> marketplace<span className="gradient-text animate-gradient">.</span>
             </h1>
         <p className="mt-6 text-lg text-muted-foreground">
             Welcome to DormDeals: your commission-free marketplace for buying and selling on campus!
