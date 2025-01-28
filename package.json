@@ -30,6 +30,7 @@
     "express": "^4.21.2",
     "lucide-react": "^0.468.0",
     "next": "15.0.4",
+    "nodemailer": "^6.9.16",
     "npx": "^10.2.2",
     "payload": "^2.0.15",
     "react": "^19.0.0",
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^8",

@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { BadgePercent, CircleCheck, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
+console.log("You are doing good work my man")
 const perks = [
     {
         name : 'No Commission',
@@ -40,7 +41,7 @@ export default function Home() {
         </div>
     </MaxWidthWrapper>
     <section className="border-t border-gray-200 bg-gray-50">
-        <MaxWidthWrapper className="py-20">
+        <MaxWidthWrapper className="py-20 mx-auto">
             <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0">
                 {perks.map((perk) => (
                     <div key={perk.name} className="text-center md:flex md:items-start md:text-left lg:block lg:text-center"> 

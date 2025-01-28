@@ -13,18 +13,22 @@ import { AuthCredentialsValidator, TAuthCredentialsValidator } from "@/lib/valid
 import { trpc } from "@/trpc/client"
 import { toast } from "sonner"
 import { ZodError } from "zod"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 const Page = () => {
+
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    const isSeller = searchParams.get('as') === "seller"
+    const origin = searchParams.get("origin")
 
   const {register, handleSubmit, formState:{errors}} = 
     useForm<TAuthCredentialsValidator>({
         resolver: zodResolver(AuthCredentialsValidator)
     })
 
-    const router = useRouter()
 
-    const {mutate, isLoading} = trpc.auth.createPayloadUser.useMutation({
+    const {mutate, isLoading} = trpc.auth.signIn.useMutation({
         onError: (err) => {
             if(err.data?.code === "CONFLICT") {
                 toast.error("This email is already in use! Sign in instead?")
@@ -58,9 +62,9 @@ const Page = () => {
             <div className="mx-auto flex flex-col justify-center space-y-6 w-[350px]">
                 <div className="flex flex-col items-center space-y-2 text-center">
                     <Icons.logo className="h-20 w-20"/>
-                    <h1 className="text-2xl font-bold">Create an Account</h1>
-                    <Link href='/sign-in' className={buttonVariants({variant: "link"})}>
-                    Already have an account? Sign in
+                    <h1 className="text-2xl font-bold">Sign In to your Account</h1>
+                    <Link href='/sign-up' className={buttonVariants({variant: "link"})}>
+                    Don&apos;t have an account?
                     <ArrowRight className="h-4 w-4" />
                     </Link>
                 </div>
@@ -94,9 +98,19 @@ const Page = () => {
                                 )}
                             </div>
 
-                            <Button>Sign-Up</Button>
+                            <Button>Sign-In</Button>
                         </div>
                     </form>
+                    <div className="relative">
+                        <div aria-hidden="true" className="absolute inset-0 flex items-center">
+                            <span className="w-full border-t"/>
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-background px-2 text-muted-foreground">
+                                or
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div> 
